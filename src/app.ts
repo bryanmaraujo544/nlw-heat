@@ -1,10 +1,15 @@
 import 'dotenv/config';
 import  express from 'express';
-import { router } from './routes';
+require('express-async-errors');
+import routes from './routes';
 const app = express();
 
 app.use(express.json());
-app.use(router);
+app.use(routes);
+app.use((error, req, res, next) => {
+    console.log(error);
+    res.sendStatus(500);
+})
 
 app.get('/github', (req, res) => {
     res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`);
