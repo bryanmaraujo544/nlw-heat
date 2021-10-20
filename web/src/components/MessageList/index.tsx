@@ -1,42 +1,42 @@
+import { api } from '../../services/api';
 import styles from './styles.module.scss';
 import logoImg from '../../assets/logo.svg';
+import { useEffect, useState } from 'react';
+
+type Message = {
+   id: string;
+   text: string;
+   user: {
+      name: string;
+      avatar_url: string;
+   }
+}
 
 export function MessageList() {
+   const [messages, setMessages] = useState<Message[]>([]);
+   useEffect(() => {
+      (async () => {
+         const res = await api.get<Message[]>('messages/last3');
+         setMessages(res.data);
+      })();
+   }, [])
    return (
       <div className={styles.messageListWrapper}>
          <img src={logoImg} alt="DoWhile 2021" />
 
          <ul className={styles.messageList}>
-            <li className={styles.message}>
-               <p className={styles.messageContent}>Não vejo a hora de começar esse evento maravilhoso que agrega tanto na vida de qualquer progamador brasileiro</p>
-               <div className={styles.messageUser}>
-                  <div className={styles.userImage}>
-                     <img src="https://github.com/bryanmaraujo544.png" alt="Bryan" />
+            {messages.map((msg) => (
+               <li className={styles.message} key={msg.id}>
+                  <p className={styles.messageContent}>{msg.text}</p>
+                  <div className={styles.messageUser}>
+                     <div className={styles.userImage}>
+                        <img src={msg.user.avatar_url} alt={msg.user.name} />
+                     </div>
+                     <span>{msg.user.name}</span>
                   </div>
-                  <span>Bryan Martins</span>
-               </div>
-            
-            </li>
-            <li className={styles.message}>
-               <p className={styles.messageContent}>Não vejo a hora de começar esse evento maravilhoso que agrega tanto na vida de qualquer progamador brasileiro</p>
-               <div className={styles.messageUser}>
-                  <div className={styles.userImage}>
-                     <img src="https://github.com/bryanmaraujo544.png" alt="Bryan" />
-                  </div>
-                  <span>Bryan Martins</span>
-               </div>
-            
-            </li>
-            <li className={styles.message}>
-               <p className={styles.messageContent}>Não vejo a hora de começar esse evento maravilhoso que agrega tanto na vida de qualquer progamador brasileiro</p>
-               <div className={styles.messageUser}>
-                  <div className={styles.userImage}>
-                     <img src="https://github.com/bryanmaraujo544.png" alt="Bryan" />
-                  </div>
-                  <span>Bryan Martins</span>
-               </div>
-            
-            </li>
+               
+               </li>
+            ))}
          </ul>
       </div>
    )
