@@ -4,15 +4,21 @@ import { MessageList } from './components/MessageList';
 import { SendMessageForm } from './components/SendMessageForm';
 import { AuthContext } from './contexts/auth';
 import styles from './styles/App.module.scss';
+import { AppContainer, Square } from './styles/AppContainer.ts';
 
 export function App() {
   const { user } = useContext(AuthContext);
 
+
   return (
-    <main className={`${styles.contentWrapper} ${!!user ? styles.contentSigned : ''}`}>
+    
+
+    <AppContainer isSigned={true}>
       <MessageList />
       { !!user ? <SendMessageForm /> : <LoginBox /> }
-    </main>
+    </AppContainer>
+    // <main className={`${styles.contentWrapper} ${!!user ? styles.contentSigned : ''}`}>
+    // </main>
   )
 }
 

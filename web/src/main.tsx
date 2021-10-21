@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import { AuthProvider } from './contexts/auth';
-import './styles/global.css';
+import { GlobalStyles } from './styles/global.ts';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
+      <GlobalStyles />
       <App />
     </AuthProvider>
   </React.StrictMode>,
