@@ -6,7 +6,7 @@ class GetLast3MessagesController {
         const service = new GetLast3MessagesService;
         const result = await service.execute();
 
-        return res.json(result)
+        return res.json(result);
     }
 }
 

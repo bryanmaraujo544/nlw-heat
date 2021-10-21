@@ -13,7 +13,7 @@ class CreateMessageService {
             }
         })
 
-        const infoWS = {
+        const infoForSocketShow = {
             text: message.text, 
             user_id: message.user_id,
             created_at: message.created_at,
@@ -23,7 +23,7 @@ class CreateMessageService {
             }
         };
 
-        io.emit('new_message', infoWS);
+        io.emit('new_message', infoForSocketShow);
         return message;
     }
 }
