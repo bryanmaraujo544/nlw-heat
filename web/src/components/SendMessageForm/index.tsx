@@ -1,8 +1,10 @@
+import styles from './styles.module.scss';
+import { Container, SignOutButton, UserInfo, SendMessageFormContainer } from './styles.ts';
 import { FormEvent, useContext, useState } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
 import { AuthContext } from '../../contexts/auth';
 import { api } from '../../services/api';
-import styles from './styles.module.scss';
+
 
 export function SendMessageForm() {
    const { user, signOut } = useContext(AuthContext);
@@ -23,21 +25,21 @@ export function SendMessageForm() {
 
 
    return (
-      <div className={styles.sendMessageFormWrapper}>
-         <button onClick={signOut} className={styles.signOutButton}>
+      <Container>
+         <SignOutButton onClick={signOut}>
             <VscSignOut size="32" />
-         </button>
-         <header className={styles.userInformation}>
-            <div className={styles.userImage}>
+         </ SignOutButton>
+         <UserInfo>
+            <div className="userImage">
                <img src={user?.avatar_url} alt={user?.name} />
             </div>
-            <strong className={styles.userName}>{user?.name}</strong>
-            <span className={styles.userGithub}>
+            <strong className="userName">{user?.name}</strong>
+            <span className="userGithub">
                <VscGithubInverted />
                {user?.login}
             </span>
-         </header>
-         <form onSubmit={handleSendMessage}className={styles.sendMessageForm}>
+         </UserInfo>
+         <SendMessageFormContainer>
             <label htmlFor="message">Mensagem</label>
             <textarea 
                name="message" 
@@ -47,7 +49,7 @@ export function SendMessageForm() {
                value={message}
             />
             <button type="submit">Enviar Mensagem</button>
-         </form>
-      </div>
+         </SendMessageFormContainer>
+      </Container>
    )
 }

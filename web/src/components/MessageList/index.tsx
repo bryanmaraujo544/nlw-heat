@@ -1,5 +1,6 @@
+
+import { Container, MessageListContainer } from './styles.ts';
 import { api } from '../../services/api';
-import styles from './styles.module.scss';
 import logoImg from '../../assets/logo.svg';
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client'
@@ -43,23 +44,25 @@ export function MessageList() {
          setMessages(res.data);
       })();
    }, [])
-   return (
-      <div className={styles.messageListWrapper}>
-         <img src={logoImg} alt="DoWhile 2021" />
 
-         <ul className={styles.messageList}>
+   return (
+      <Container>
+         <img src={logoImg} alt="DoWhile 2021" />
+         <MessageListContainer>
             {messages.map((msg) => (
-               <li className={styles.message} key={msg.id}>
-                  <p className={styles.messageContent}>{msg.text}</p>
-                  <div className={styles.messageUser}>
-                     <div className={styles.userImage}>
+               <li className="message" key={msg.id}>
+                  <p className="messageContent">{msg.text}</p>
+                  <div className="messageUser">
+                     <div className="userImage">
                         <img src={msg.user.avatar_url} alt={msg.user.name} />
                      </div>
                      <span>{msg.user.name}</span>
                   </div>
                </li>
             ))}
-         </ul>
-      </div>
+
+         </MessageListContainer>
+      </Container>
+    
    )
 }
