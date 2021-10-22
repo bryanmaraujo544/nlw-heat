@@ -24,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
       color: #e1e1e6;
       background: #121214;
       max-width: 100vw;
- 
+      overflow-x: hidden;
    }
 
 `

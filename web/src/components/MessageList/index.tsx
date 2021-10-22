@@ -1,5 +1,5 @@
 
-import { Container, MessageListContainer } from './styles.ts';
+import { Container, MessageListContainer } from './styles';
 import { api } from '../../services/api';
 import logoImg from '../../assets/logo.svg';
 import { useEffect, useState } from 'react';
@@ -57,6 +57,8 @@ export function MessageList() {
    // This useEffect is responsible to animate each message every time the messages state suffer some alteration
    // In other words, all the time a new messages is sended to the state, the messages are animated
    useEffect(() => {
+      console.log('RUNNED');
+      console.log(messages)
       controls.start(i => ({
          opacity: 1,
          y: 0,
@@ -87,6 +89,7 @@ export function MessageList() {
                      custom={i + 1}
                      layout
                   >
+                  {i}
                      <p className="messageContent">{msg.text}</p>
                      <div className="messageUser">
                         <div className="userImage">

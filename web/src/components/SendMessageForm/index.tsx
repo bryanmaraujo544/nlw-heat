@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Container, SignOutButton, UserInfo, SendMessageFormContainer } from './styles.ts';
+import { Container, SignOutButton, UserInfo, SendMessageFormContainer } from './styles';
 import { FormEvent, useContext, useState, useEffect } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
 import { AuthContext } from '../../contexts/auth';
@@ -68,5 +68,6 @@ export function SendMessageForm() {
                <button type="submit">Enviar Mensagem</button>
             </SendMessageFormContainer>
          </Container>
+
    )
 }
