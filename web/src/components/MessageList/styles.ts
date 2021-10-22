@@ -6,6 +6,12 @@ export const Container = styled.div`
    justify-content: space-between;
    align-items: flex-start;
 
+   @media (max-width: 968px) {
+      align-items: center;
+      margin-top: 32px;
+      grid-row: 2 / 3;
+   }
+
    > img {
       height: 28px;
       margin: 32px 0;

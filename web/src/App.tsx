@@ -9,16 +9,11 @@ import { AppContainer, Square } from './styles/AppContainer.ts';
 export function App() {
   const { user } = useContext(AuthContext);
 
-
   return (
-    
-
-    <AppContainer isSigned={true}>
+    <AppContainer isSigned={!!user ? true : false}>
       <MessageList />
       { !!user ? <SendMessageForm /> : <LoginBox /> }
     </AppContainer>
-    // <main className={`${styles.contentWrapper} ${!!user ? styles.contentSigned : ''}`}>
-    // </main>
   )
 }
 

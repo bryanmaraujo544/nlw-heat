@@ -80,6 +80,11 @@ export const SendMessageFormContainer = styled.form`
       background: #29292e;
       font-weight: 700;
       text-align: center;
+
+      @media(max-width: 768px) {
+         padding: 12px 20px;
+         font-size: 16px;
+      }
    }
 
    textarea {
@@ -91,6 +96,11 @@ export const SendMessageFormContainer = styled.form`
       color: #e1e1e6;
       font-size: 16px;
       line-height: 24px;
+
+      @media(max-width: 768px) {
+         height: 100px;
+         padding: 20px;
+      }
 
       &:focus {
          outline: 0;
@@ -116,6 +126,11 @@ export const SendMessageFormContainer = styled.form`
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media(max-width: 768px) {
+         padding: 0 24px;
+         font-size: 12px;
+      }
 
       &:hover {
          filter: brightness(0.9);
