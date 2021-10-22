@@ -9,27 +9,15 @@ export const AppContainer = styled.main`
    grid-template-columns: 1fr 453px;
    column-gap: 120px;
    position: relative;
-   padding: 0 64px;
+   padding: 16px 32px;
 
    @media(max-width: 968px) {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
+      height: 100%;
+      padding-bottom: 64px;
    }
-/* 
-   &::before {
-      @media(min-width: 968px){
-         ${props => props.isSigned && css`
-            content: '';
-            height: 100vh;
-            width: 420px;
-            background: url(${bg}) no-repeat;
-            background-size: cover;
-            position: absolute;
-            right: -200px;
-            top: 0;
-         `} 
-      }
-   } */
+
 
 
 `

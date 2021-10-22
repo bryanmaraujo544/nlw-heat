@@ -10,18 +10,25 @@ export const Container = styled.div`
    flex-direction: column;
    align-items: center;
 
+
+   @media (max-width: 968px) {
+      padding: 172px 32px 0px;
+      background: #17171a url(${bgImage}) no-repeat center bottom;
+      box-shadow: inset 0px 32px 300px rgba(0,0,0,0.7);
+   }
+
    strong {
-      font-size: 32px;
+      font-size: 3.2rem;
       line-height: 36px;
    }
 
    .signInWithGithub {
       background: #ffcd1e;
-      margin-top: 32px;
+      margin-top: 3.2rem;
       padding: 0 40px;
-      height: 56px;
+      height: 5.6rem;
       color: #09090a;
-      font-size: 14px;
+      font-size: 1.4rem;
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
@@ -35,6 +42,11 @@ export const Container = styled.div`
 
       &:hover {
          filter: brightness(0.9);
+      }
+
+      @media (max-width: 968px) {
+         height: 48px;
+         padding: 0 32px;
       }
 
    }

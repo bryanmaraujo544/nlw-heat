@@ -16,9 +16,7 @@ export function SendMessageForm() {
       if (!message.trim()) {
          return;
       }
-
       await api.post('messages', { message });
-
       setMessage('');
    }
 
@@ -36,16 +34,14 @@ export function SendMessageForm() {
             duration: 0.3
          }
       });
-      signOut()
+      signOut();
    }
    return (
-
          <Container
             as={motion.div}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={controls}
             transition={{ delay: 0, duration: 0.3 }}
-            
          >
             <SignOutButton onClick={tapAnimation}>
                <VscSignOut size="32" />
@@ -72,6 +68,5 @@ export function SendMessageForm() {
                <button type="submit">Enviar Mensagem</button>
             </SendMessageFormContainer>
          </Container>
-
    )
 }

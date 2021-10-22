@@ -15,11 +15,13 @@ type Message = {
       avatar_url: string;
    }
 }
-const socket = io('http://localhost:4000');
 
 const messagesQueue: Message[] = [];
 
+const socket = io('http://localhost:4000');
 
+// Every time a new message is sended, we grab the informations of it and put in the end of our messagesQueue array
+// Theses information about message is been sended by backend for sockec.io server
 socket.on('new_message', newMessage => {
    messagesQueue.push(newMessage);
 })
@@ -28,6 +30,8 @@ export function MessageList() {
    const controls = useAnimation();
    const [messages, setMessages] = useState<Message[]>([]);
 
+   /* in every 3 second we are updating our messages states with the oldest message of messageQueue ->
+      who is been updated by socket.io */
    useEffect(() => {
       const timer = setInterval(() => {
          if (messagesQueue.length > 0) {
@@ -39,24 +43,26 @@ export function MessageList() {
 
             messagesQueue.shift();
          }
-      }, 3000)
-   }, [])
+      }, 3000);
+   }, []);
 
+   // Here we are getting the last 3 messages from our backend
    useEffect(() => {
       (async () => {
          const res = await api.get<Message[]>('messages/last3');
          setMessages(res.data);
       })();
-   }, [])
+   }, []);
 
+   // This useEffect is responsible to animate each message every time the messages state suffer some alteration
+   // In other words, all the time a new messages is sended to the state, the messages are animated
    useEffect(() => {
-      console.log('rodu')
       controls.start(i => ({
          opacity: 1,
          y: 0,
          transition: { delay: i * 0.3 }
-      }))
-   }, [messages])
+      }));
+   }, [messages]);
 
    return (
       <Container>
@@ -90,7 +96,6 @@ export function MessageList() {
                      </div>
                   </motion.li>
                ))}
-
             </MessageListContainer>
          </AnimateSharedLayout>
       </Container>

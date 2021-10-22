@@ -14,13 +14,17 @@ export const GlobalStyles = createGlobalStyle`
 
    html {
       font-size: 62.5%;
+
+      @media (max-width: 968px) {
+         font-size: 9px;
+      }
    }
 
    body {
       color: #e1e1e6;
       background: #121214;
       max-width: 100vw;
-      overflow-x: hidden;
+ 
    }
 
 `

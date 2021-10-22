@@ -8,13 +8,20 @@ export const Container = styled.div`
 
    @media (max-width: 968px) {
       align-items: center;
-      margin-top: 32px;
-      grid-row: 2 / 3;
+      margin-bottom: 64px;
    }
 
    > img {
-      height: 28px;
-      margin: 32px 0;
+     height: 2.8rem;
+     margin-top: 3.2rem;
+     align-self: flex-start;
+
+     @media (max-width: 968px) {
+        margin-top: 2.4rem;
+        margin-bottom: 48px;
+        height: 2.4rem;
+     }
+   
    }
 `
 
@@ -23,23 +30,23 @@ export const MessageListContainer = styled.ul`
    display: flex;
    flex-direction: column;
    justify-content: center;
-   gap: 42px;
+   gap: 4.2rem;
    flex: 1;
 
    .message {
       max-width: 440px;
 
       &:nth-child(2) {
-         margin-left: 80px;
+         margin-left: 8.0rem;
       }
 
       .messageContent {
-         font-size: 18px;
-         line-height: 28px;
+         font-size: 1.8rem;
+         line-height: 1.5;
       }
 
       .messageUser {
-         margin-top: 16px;
+         margin-top: 1.6rem;
          display: flex;
          align-items: center;
          .userImage{
@@ -51,16 +58,16 @@ export const MessageListContainer = styled.ul`
             border-radius: 50%;
             line-height: 0;
             img {
-               width: 30px;
-               height: 30px;
+               width: 3rem;
+               height: 3rem;
                border-radius: 50%;
                border: 4px solid #121214;
             }
          }
 
          span {
-            font-size: 16px;
-            margin-left: 12px;
+            font-size: 1.6rem;
+            margin-left: 1.2rem;
          }
       }
    }
