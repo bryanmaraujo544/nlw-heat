@@ -20,6 +20,7 @@ The interface of the application was made using React.
 - SqLite
 - Socket.io
 - React
+- Styled-Components
 - Framer-motion
 - Axios 
 
